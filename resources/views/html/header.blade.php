@@ -8,7 +8,7 @@
                 <div class="col-12 h-100">
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
-                            <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                            <a href="{{url('/')}}"><img src={{asset("img/core-img/logo.png")}} alt=""></a>
                         </div>
                         @if(!Auth::check())
                         <div class="login-content">
@@ -51,15 +51,12 @@
                                 <li><a href="{{url('/')}}">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{url('/')}}">Home</a></li>
-                                        <li><a href="{{url('/about_us')}}">About Us</a></li>
-                                        <li><a href="{{url('/post')}}">Post</a></li>
                                         <li><a href="{{url('/blog')}}">Blog</a></li>
-                                        <li><a href="{{url('/contact')}}">Contact</a></li>
+                                        <li><a href="{{url('/post')}}">Post</a></li>
+                                        <li><a class="dropdown-item" href="{{url('/post_detail')}}">WORKSHOP</a></li>
+                                        <li><a class="dropdown-item" href="{{url('/scholarships')}}">SCHOLARSHIPS</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{url('/post')}}">Post</a></li>
-                                <li><a href="{{url('/blog')}}">Blog</a></li>
                                 <li><a href="{{url('/about_us')}}">About Us</a></li>
                                 <li><a href="{{url('/contact')}}">Contact</a></li>
                                 <li><a href="{{url('/donate')}}">Donate</a></li>

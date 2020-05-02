@@ -18,27 +18,42 @@ Route::get('/', function () {
 });
 Route::get("/","WebController@home");
 Route::get("/about_us","WebController@about_us");
+Route::get("/contact","WebController@contact");
+Route::get("/donate","WebController@donate");
+Route::get("/thanks", 'WebController@thanks');
+//
 Route::get("/post","WebController@post");
 Route::get("/post_detail","WebController@post_detail");
-Route::get("/blog","WebController@blog");
-Route::get("/blog_detail","WebController@blog_detail");
-Route::get("/contact","WebController@contact");
-Route::get("/thanks", 'WebController@thanks');
+//
+Route::prefix('/blog')->group(function () {
+    Route::get("/","WebController@blog");
+    Route::get("/{id}","WebController@blog_detail");
+});
+//
+Route::post("/sendemail", 'WebController@sendemail');
+Route::post("/sendscholarship", 'WebController@sendscholarship')->middleware("auth");
+//
+Route::post("/search","WebController@search");
+//
 
+Route::get("/scholarships","WebController@scholarships");
+Route::get("/scholarships_detail","WebController@scholarships_detail");
+Route::get("/form_scholarships","WebController@form_scholarships");
+Route::get("/workshop","WebController@workshop");
 
+//
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/logout', function() {
     Illuminate\Support\Facades\Auth::logout();
-    return redirect()->to("/home");
+    return redirect()->to("/");
 });
 
 
-Route::get("/donate","WebController@donate");
-Route::post("/sendemail", 'WebController@sendemail');
+
+
 
 
 
