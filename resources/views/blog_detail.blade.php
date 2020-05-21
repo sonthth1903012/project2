@@ -31,10 +31,10 @@
                                     <a href="#" style="color:darkgrey; font-weight: 200">Lifestyle</a>
                                 </div>
                                 <ul class="blog_meta list" style="float: right; padding-top:10px">
-                                    <li><a href="#" style="color:darkgrey; font-weight: 200">{{$post->author}}<i class="fa fa-user" style="padding-left:14px;color:dimgrey"></i></a></li>
-                                    <li><a href="#" style="color:darkgrey; font-weight: 200">{{$post->created_at}}<i class="fa fa-calendar" style="padding-left:14px;color:dimgrey"></i></a></li>
-                                    <li><a href="#" style="color:darkgrey; font-weight: 200">View<i class="fa fa-eye" style="padding-left:14px;color:dimgrey"></i></a></li>
-                                    <li><a href="#" style="color:darkgrey; font-weight: 200">Comments<i class="fa fa-comment" style="padding-left:14px;color:dimgrey"></i></a></li>
+                                    <li><a href="#" style="color:darkgrey; font-weight: 200">{{$post->author}}<i class="fa fa-user" style="padding-left:10px;color:dimgrey"></i></a></li>
+                                    <li><a href="#" style="color:darkgrey; font-weight: 200">{{$post->created_at}}<i class="fa fa-calendar" style="padding-left:10px;color:dimgrey"></i></a></li>
+                                    <li><a href="#" style="color:darkgrey; font-weight: 200">View<i class="fa fa-eye" style="padding-left:10px;color:dimgrey"></i></a></li>
+                                    <li><a href="#" style="color:darkgrey; font-weight: 200">Comments<i class="fa fa-comment" style="padding-left:10px;color:dimgrey"></i></a></li>
                                 </ul>
                                 <div class="contact-social-info d-flex mb-30" style="float: right; padding-top:10px">
                                     <a href="#"><i class="fa fa-pinterest" aria-hidden="true" style="padding-left:14px;color:darkgrey; font-weight: 200"></i></a>
@@ -46,18 +46,13 @@
                         </div>
                         <div class="col-lg-9 col-md-9 blog_details">
                             <h2>{{$post->title}}</h2>
-                            <p class="excert">
-                            </p>{{$post->content}}<p>
+                            <div class="excert">
+                            {{$post->content}}</div>
+
                         </div>
                     </div>
                     <!--================Nav Post Area =================-->
-                    <div>
-
-                    </div>
                     <!--================Comment Area =================-->
-                    <div>
-
-                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="academy-blog-sidebar">
@@ -69,51 +64,41 @@
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
-
                         <!-- Blog Post Catagories -->
                         <div class="blog-post-categories mb-30">
                             <h5>Categories</h5>
                             @foreach($category as $c)
                                 <ul>
-                                    <li><a href="#">{{$c->category_name}}</a></li>
+                                    <li><a href="{{url("blog/category/{$c->id}")}}">{{$c->category_name}}</a></li>
                                 </ul>
                             @endforeach
                         </div>
-
                         <!-- Latest Blog Posts Area -->
                         <div class="latest-blog-posts mb-30">
                             <h5>Latest Posts</h5>
-                        @foreach( $link as $l)
-
+                            @foreach( $link as $l)
                             <!-- Single Latest Blog Post -->
                                 <div class="single-latest-blog-post d-flex mb-30">
                                     <div class="latest-blog-post-thumb">
-                                        <img src= {{$l->thumbnail}} alt="">
+                                        <img href="{{url("blog/{$l->id}")}}" src= {{$l->thumbnail}} alt="">
                                     </div>
                                     <div class="latest-blog-post-content">
-                                        <a href="#" class="post-title">
+                                        <a href="{{url("blog/{$l->id}")}}" class="post-title">
                                             <h6>{{$l->title}}</h6>
                                         </a>
                                         <a href="#" class="post-date">{{$l->created_at}}</a>
                                     </div>
                                 </div>
                             @endforeach
-
-
                         </div>
-
                         <!-- Add Widget -->
                         <div class="add-widget" style="padding-bottom: 50px">
                             <a href="#"><img src={{asset("img/blog-img/add.png")}} alt=""></a>
                         </div>
-
-
-
-                    </div>
                     </div>
                 </div>
             </div>
-        </div>
+
     </section>
     <!--================Blog Area =================-->
 @endsection

@@ -20,6 +20,7 @@ Route::get("/","WebController@home");
 Route::get("/about_us","WebController@about_us");
 Route::get("/contact","WebController@contact");
 Route::get("/donate","WebController@donate");
+Route::get("/donate_form","WebController@donate_form")->middleware("auth");
 Route::get("/thanks", 'WebController@thanks');
 //
 Route::get("/post","WebController@post");
@@ -28,6 +29,7 @@ Route::get("/post_detail","WebController@post_detail");
 Route::prefix('/blog')->group(function () {
     Route::get("/","WebController@blog");
     Route::get("/{id}","WebController@blog_detail");
+    Route::get("/category/{id}","Webcontroller@blog_category");
 });
 //
 Route::post("/sendemail", 'WebController@sendemail');
@@ -41,6 +43,8 @@ Route::get("/scholarships_detail","WebController@scholarships_detail");
 Route::get("/form_scholarships","WebController@form_scholarships");
 Route::get("/workshop","WebController@workshop");
 
+
+Route::get("/workshop", "WebController@workshop");
 //
 Auth::routes();
 
